@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+        <link rel="stylesheet" href="../src/css/ani-quote.css" />
+        <title>Anime Quote | SimpleJS</title>
+    </head>
+    <body>
+        <div class="container">
+            <!-- Title -->
+            <div class="anime-title">title</div>
+            <!-- Character Info -->
+            <div class="anime-content">
+                <figure class="character">
+                    <img class="character__img" src="sample.jpg" alt="character_img" />
+                    <figcaption class="character__name">character</figcaption>
+                </figure>
+                <div class="anime-content__text">
+                    <i class="fas fa-quote-left"></i>
+                    <span class="anime-content__quote">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto reprehenderit soluta
+                        obcaecati id quas non a voluptates delectus labore dolor!
+                    </span>
+                    <i class="fas fa-quote-right"></i>
+                </div>
+            </div>
+            <!-- Buttons -->
+            <div class="button-container">
+                <div class="nav-export">
+                    <button class="btn btn__export btn__export--laftel">LAFTEL</button>
+                    <button class="btn btn__export btn__export--google"><i class="fab fa-google"></i></button>
+                    <button class="btn btn__export btn__export--twitter"><i class="fab fa-twitter"></i></button>
+                </div>
+                <button class="btn next-quote">next quote</button>
+            </div>
+        </div>
+        <script src="https://kit.fontawesome.com/2fb444e33e.js" crossorigin="anonymous"></script>
+        <script src="../src/js/ani-quote.js"></script>
+    </body>
+</html>
