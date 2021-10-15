@@ -2,6 +2,9 @@ const animeTitle = document.querySelector(".anime-title");
 const chracterName = document.querySelector(".anime-character");
 const animeQuote = document.querySelector(".anime-text__quote");
 const newQuoteBtn = document.querySelector(".btn.new-quote");
+const laftelBtn = document.querySelector(".btn__export--laftel");
+const googleBtn = document.querySelector(".btn__export--google");
+const twitterBtn = document.querySelector(".btn__export--twitter");
 
 let apiData = {};
 
@@ -32,8 +35,26 @@ async function getData() {
     }
 }
 
+function searchLaftel() {
+    const laftelUrl = `https://laftel.net/search?keyword=${animeTitle.textContent}`;
+    window.open(laftelUrl, "_blank");
+}
+
+function searchGoogle() {
+    const googleUrl = `https://www.google.com/search?q=${animeTitle.textContent} ${chracterName.textContent}`;
+    window.open(googleUrl, "_blank");
+}
+
+function searchTwitter() {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${animeQuote.textContent} ${chracterName.textContent}`;
+    window.open(twitterUrl, "_blank");
+}
+
 // Event Listener
 newQuoteBtn.addEventListener("click", getData);
+laftelBtn.addEventListener("click", searchLaftel);
+googleBtn.addEventListener("click", searchGoogle);
+twitterBtn.addEventListener("click", searchTwitter);
 
 //On Load
 getData();
