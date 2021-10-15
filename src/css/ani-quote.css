@@ -12,6 +12,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    min-width: 29rem;
     text-align: center;
     color: rgba(255, 255, 255, 0.75);
 }
@@ -54,10 +55,14 @@ body {
     justify-content: space-between;
 }
 
+.button-container .nav-export {
+    margin-right: 5px;
+}
+
 .btn {
     font-family: "CookieRun";
     cursor: pointer;
-    font-size: 1.2rem;
+    font-size: 1.125rem;
     height: 2.5rem;
     border: none;
     border-radius: 10px;
@@ -99,14 +104,5 @@ body {
 @media screen and (max-width: 1000px) {
     .container {
         margin: auto 10px;
-    }
-
-    .anime-content__quote {
-        font-size: 1rem;
-    }
-
-    .fa-quote-left,
-    .fa-quote-right {
-        font-size: 1rem;
     }
 }
