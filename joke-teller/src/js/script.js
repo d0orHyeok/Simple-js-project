@@ -38,7 +38,8 @@ const VoiceRSS = {
         (t.onreadystatechange = function () {
             if (4 == t.readyState && 200 == t.status) {
                 if (0 == t.responseText.indexOf("ERROR")) throw t.responseText;
-                (audioElement.src = t.responseText), audioElement.play();
+                audioElement.src = t.responseText;
+                audioElement.play();
             }
         }),
             t.open("POST", "https://api.voicerss.org/", !0),
@@ -102,10 +103,11 @@ const VoiceRSS = {
     },
 };
 
-function test() {
+// Passing Joke to VoiceRSS API
+function tellMe(joke) {
     VoiceRSS.speech({
         key: "218f5e8f12d240bf967e023c82e55fb2",
-        src: "Hello world",
+        src: joke,
         hl: "en-us",
         r: 0,
         c: "mp3",
@@ -114,4 +116,24 @@ function test() {
     });
 }
 
-test();
+// Get Jokes from Joke API
+async function getJokes() {
+    let joke = "";
+    const apiUrl = "https://v2.jokeapi.dev/joke/Programming?blacklistFlags=nsfw";
+    try {
+        const response = await fetch(apiUrl);
+        const data = await response.json();
+        if (data.setup) {
+            joke = `${data.setup} ... ${data.delivery}`;
+        } else {
+            joke = data.joke;
+        }
+        tellMe(joke);
+    } catch (error) {
+        // Error
+        console.log("Error: ", error);
+    }
+}
+
+// Event Listeners
+button.addEventListener("click", getJokes);
