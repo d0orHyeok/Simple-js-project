@@ -3,6 +3,9 @@ const favoritesNav = document.getElementById("favoritesNav");
 const imagesContainer = document.querySelector(".images-container");
 const saveConfirmed = document.querySelector(".save-confirmed");
 const loader = document.querySelector(".loader");
+const favoritesBtn = document.getElementById("favorite-button");
+const loadMoreBtn1 = document.getElementById("load-more-button1");
+const loadMoreBtn2 = document.getElementById("load-more-button2");
 
 // NASA API
 const count = 10;
@@ -11,6 +14,18 @@ const apiUrl = `https://api.nasa.gov/planetary/apod?api_key=${api_key}&count=${c
 
 let resultsArray = [];
 let favorites = {};
+
+function showContent(page) {
+    window.scrollTo({ top: 0, behavior: "instant" });
+    if (page === "results") {
+        resultsNav.classList.remove("hidden");
+        favoritesNav.classList.add("hidden");
+    } else {
+        resultsNav.classList.add("hidden");
+        favoritesNav.classList.remove("hidden");
+    }
+    loader.classList.add("hidden");
+}
 
 const createDOMNodes = (page) => {
     const currentArray = page === "results" ? resultsArray : Object.values(favorites);
@@ -77,6 +92,7 @@ const updateDOM = (page) => {
     }
     imagesContainer.textContent = "";
     createDOMNodes(page);
+    showContent(page);
 };
 
 // Add result to Favorites
@@ -108,6 +124,8 @@ const removeFavorite = (itemUrl) => {
 
 // Get Images from NASA API
 const getNasaPictures = async () => {
+    // Show Loader
+    loader.classList.remove("hidden");
     try {
         const response = await fetch(apiUrl);
         resultsArray = await response.json();
@@ -116,6 +134,11 @@ const getNasaPictures = async () => {
         // Catch Error Here
     }
 };
+
+// Event Listener
+favoritesBtn.setAttribute("onclick", "updateDOM('favorites')");
+loadMoreBtn1.setAttribute("onclick", "getNasaPictures()");
+loadMoreBtn2.setAttribute("onclick", "getNasaPictures()");
 
 // On Load
 getNasaPictures();
