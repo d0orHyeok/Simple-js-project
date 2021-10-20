@@ -2,6 +2,19 @@ const calculatorDisplay = document.querySelector("h1");
 const inputBtns = document.querySelectorAll("button");
 const clearBtn = document.getElementById("clear-btn");
 
+// Calculate first and second values depending on operator
+const calculate = {
+    "/": (firstNumber, secondNumber) => firstNumber / secondNumber,
+
+    "*": (firstNumber, secondNumber) => firstNumber * secondNumber,
+
+    "+": (firstNumber, secondNumber) => firstNumber + secondNumber,
+
+    "-": (firstNumber, secondNumber) => firstNumber - secondNumber,
+
+    "=": (firstNumber, secondNumber) => secondNumber,
+};
+
 let firstValue = 0;
 let operatorValue = "";
 let awaitingNextValue = "false";
@@ -17,19 +30,6 @@ function sendNumberValue(number) {
             : (calculatorDisplay.textContent += number);
     }
 }
-
-// Calculate first and second values depending on operator
-const calculate = {
-    "/": (firstNumber, secondNumber) => firstNumber / secondNumber,
-
-    "*": (firstNumber, secondNumber) => firstNumber * secondNumber,
-
-    "+": (firstNumber, secondNumber) => firstNumber + secondNumber,
-
-    "-": (firstNumber, secondNumber) => firstNumber - secondNumber,
-
-    "=": (firstNumber, secondNumber) => secondNumber,
-};
 
 function useOperator(operator) {
     const currentValue = Number(calculatorDisplay.textContent);
@@ -60,6 +60,14 @@ function addDecimal() {
     }
 }
 
+// Reset all values, dispaly
+function resetAll() {
+    calculatorDisplay.textContent = "0";
+    firstValue = 0;
+    operatorValue = "";
+    awaitingNextValue = false;
+}
+
 // Add Event Listener for numbers, operators, decimal buttons
 inputBtns.forEach((inputBtn) => {
     if (inputBtn.classList.length === 0) {
@@ -70,14 +78,6 @@ inputBtns.forEach((inputBtn) => {
         inputBtn.addEventListener("click", addDecimal);
     }
 });
-
-// Reset all values, dispaly
-function resetAll() {
-    calculatorDisplay.textContent = "0";
-    firstValue = 0;
-    operatorValue = "";
-    awaitingNextValue = false;
-}
 
 // Event Listener
 clearBtn.addEventListener("click", resetAll);
