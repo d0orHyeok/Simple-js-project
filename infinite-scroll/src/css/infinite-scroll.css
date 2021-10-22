@@ -3,6 +3,7 @@
 body {
     font-family: "Bebas Neue", cursive;
     background: whitesmoke;
+    color: rgb(104, 17, 104);
 }
 
 h1 {
@@ -10,6 +11,12 @@ h1 {
     margin: 25px 0 15px 0;
     font-size: 40px;
     letter-spacing: 5px;
+}
+
+p {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 200;
 }
 
 /* Loader */
