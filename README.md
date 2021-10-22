@@ -2,7 +2,7 @@
 
 This is a course I have taken from the ZeroToMastery line of courses. This course was called JavaScript Web Projects: 20 Projects to Build Your Portfolio. If you are interested in the course, you can find it [here](https://academy.zerotomastery.io/p/javascript-projects).
 
-I have provided a demo link that will take you to a live version of the project that you can play with and try out.
+I have provided a demo link that will take you to a live version of the project that you can play with and try out. [Github Page](https://d0orhyeok.github.io/Simple-js-project/)
 
 ## The Projects
 
